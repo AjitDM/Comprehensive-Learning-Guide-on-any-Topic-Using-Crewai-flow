@@ -1,0 +1,23 @@
+{
+  "name": "Content Crew",
+  "agents": ["content_writer", "content_reviewer"],
+  "tasks": [
+    {
+      "name": "write_section_task",
+      "description": "Write a comprehensive section on the topic: \"{section_title}\".\n\nSection description: {section_description}\nTarget audience: {audience_level} level learners\n\nYour content should begin with a brief introduction, explain key concepts clearly with examples, include practical applications where appropriate, end with a summary, and be approximately 500-800 words.\n\nPreviously written sections:\n{previous_sections}",
+      "expected_output": "A well-structured, comprehensive section in Markdown format that thoroughly explains the topic and is appropriate for the target audience.",
+      "agent": "content_writer",
+      "markdown": true
+    },
+    {
+      "name": "review_section_task",
+      "description": "Review and improve this section on \"{section_title}\":\n\n{draft_content}\n\nTarget audience: {audience_level} level learners\nPreviously written sections:\n{previous_sections}\n\nFix errors, improve clarity, verify consistency, enhance structure, and add missing key information.",
+      "expected_output": "An improved, polished version of the section that maintains the original structure but enhances clarity, accuracy, and consistency.",
+      "agent": "content_reviewer",
+      "context": ["write_section_task"],
+      "markdown": true
+    }
+  ],
+  "process": "sequential",
+  "verbose": true
+}
